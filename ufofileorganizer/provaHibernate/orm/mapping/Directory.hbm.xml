@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-ago-2009 12.03.00 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="orm.mapping.Directory" table="DIRECTORY" schema="PUBLIC" catalog="TEST">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="type" class="orm.mapping.Type" fetch="select">
+            <column name="TYPE" />
+        </many-to-one>
+        <many-to-one name="directory" class="orm.mapping.Directory" fetch="select">
+            <column name="PARENTDIR" />
+        </many-to-one>
+        <many-to-one name="group" class="orm.mapping.Group" fetch="select">
+            <column name="IDGROUP" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="modified" type="big_decimal">
+            <column name="MODIFIED" precision="65535" scale="32767" />
+        </property>
+        <property name="location" type="string">
+            <column name="LOCATION" />
+        </property>
+        <property name="size" type="big_decimal">
+            <column name="SIZE" precision="65535" scale="32767" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="hidden" type="java.lang.Boolean">
+            <column name="HIDDEN" />
+        </property>
+        <property name="symlink" type="java.lang.Boolean">
+            <column name="SYMLINK" />
+        </property>
+        <set name="files" inverse="true" lazy="true" table="FILE" fetch="select">
+            <key>
+                <column name="DIRECTORYID" />
+            </key>
+            <one-to-many class="orm.mapping.File" />
+        </set>
+        <set name="directories" inverse="true" lazy="true" table="DIRECTORY" fetch="select">
+            <key>
+                <column name="PARENTDIR" />
+            </key>
+            <one-to-many class="orm.mapping.Directory" />
+        </set>
+    </class>
+</hibernate-mapping>

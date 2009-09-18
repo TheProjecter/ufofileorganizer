@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-ago-2009 12.03.00 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="orm.mapping.Type" table="TYPE" schema="PUBLIC" catalog="TEST">
+        <id name="name" type="string">
+            <column name="NAME" />
+            <generator class="assigned" />
+        </id>
+        <set name="files" inverse="true" lazy="true" table="FILE" fetch="select">
+            <key>
+                <column name="TYPE" />
+            </key>
+            <one-to-many class="orm.mapping.File" />
+        </set>
+        <set name="directories" inverse="true" lazy="true" table="DIRECTORY" fetch="select">
+            <key>
+                <column name="TYPE" />
+            </key>
+            <one-to-many class="orm.mapping.Directory" />
+        </set>
+        <set name="groups" inverse="true" lazy="true" table="GROUPID" fetch="select">
+            <key>
+                <column name="TYPE" />
+            </key>
+            <one-to-many class="orm.mapping.Group" />
+        </set>
+    </class>
+</hibernate-mapping>
