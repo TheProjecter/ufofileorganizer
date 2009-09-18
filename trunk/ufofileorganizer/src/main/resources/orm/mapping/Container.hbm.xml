@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-ago-2009 11.19.43 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="orm.mapping.Container" table="CONTAINER" schema="PUBLIC" catalog="TEST">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="container" class="orm.mapping.Container" fetch="select">
+            <column name="PARENT" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <set name="groups" inverse="true" lazy="true" table="GROUPID" fetch="select">
+            <key>
+                <column name="PARENT" />
+            </key>
+            <one-to-many class="orm.mapping.Group" />
+        </set>
+        <set name="containers" inverse="true" lazy="true" table="CONTAINER" fetch="select">
+            <key>
+                <column name="PARENT" />
+            </key>
+            <one-to-many class="orm.mapping.Container" />
+        </set>
+    </class>
+</hibernate-mapping>

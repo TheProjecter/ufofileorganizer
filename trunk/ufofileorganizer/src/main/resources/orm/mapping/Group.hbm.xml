@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-ago-2009 11.19.43 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="orm.mapping.Group" table="GROUPID" schema="PUBLIC" catalog="TEST">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="type" class="orm.mapping.Type" fetch="select">
+            <column name="TYPE" />
+        </many-to-one>
+        <many-to-one name="container" class="orm.mapping.Container" fetch="select">
+            <column name="PARENT" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="location" type="string">
+            <column name="LOCATION" />
+        </property>
+        <property name="size" type="big_decimal">
+            <column name="SIZE" precision="65535" scale="32767" />
+        </property>
+        <property name="freespace" type="big_decimal">
+            <column name="FREESPACE" precision="65535" scale="32767" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <set name="directories" inverse="true" lazy="true" table="DIRECTORY" fetch="select">
+            <key>
+                <column name="IDGROUP" />
+            </key>
+            <one-to-many class="orm.mapping.Directory" />
+        </set>
+        <set name="files" inverse="true" lazy="true" table="FILE" fetch="select">
+            <key>
+                <column name="IDGROUP" />
+            </key>
+            <one-to-many class="orm.mapping.File" />
+        </set>
+    </class>
+</hibernate-mapping>

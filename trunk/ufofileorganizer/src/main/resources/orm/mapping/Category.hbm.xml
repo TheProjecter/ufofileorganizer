@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-ago-2009 11.19.43 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="orm.mapping.Category" table="CATEGORY" schema="PUBLIC" catalog="TEST">
+        <id name="name" type="string">
+            <column name="NAME" />
+            <generator class="assigned" />
+        </id>
+    </class>
+</hibernate-mapping>
