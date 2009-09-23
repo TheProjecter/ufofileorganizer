@@ -5,7 +5,7 @@ import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
 import ufofileorganizer.core.node.TreeNodeVector;
-import ufofilearchiver.gui.utils.StringFormatter;
+import utils.string.StringFormatter;
 
 public class FinderTableModel extends AbstractTableModel {
 
