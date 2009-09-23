@@ -21,7 +21,7 @@ import ufofileorganizer.core.commands.facade.Save;
 import ufofileorganizer.core.node.*;
 import ufofilearchiver.gui.TreeTransferHandler.TreeTransferHandler;
 import ufofilearchiver.gui.tableModel.*;
-import ufofilearchiver.gui.utils.StringFormatter;
+import utils.string.StringFormatter;
 
 import javax.swing.JFrame;
 import javax.swing.tree.*;
