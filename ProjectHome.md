@@ -1,0 +1,1 @@
+This project is inspired to "Advanced File Organizer", it aims to create a similar software. UfoFileOrganizer wants to be simple and user friedly!
